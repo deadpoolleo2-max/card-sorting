@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Card sorting · Moodle CUGDL</title>
+<style>
+:root{--bg:#f7f7f5;--fg:#1a1a1a;--mut:#666;--card:#fff;--line:#d6d6d0;--ac:#2563eb;--acbg:#e8f0fe;--warn:#b45309;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161616;--fg:#eee;--mut:#a3a3a3;--card:#232323;--line:#3b3b3b;--ac:#7aa7ff;--acbg:#1e2a44;--warn:#fbbf24;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#161616;--fg:#eee;--mut:#a3a3a3;--card:#232323;--line:#3b3b3b;--ac:#7aa7ff;--acbg:#1e2a44;--warn:#fbbf24;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:16px}
+h1{font-size:22px;margin:0}h2{font-size:17px;margin:0 0 8px}
+.mut,small{color:var(--mut)}small{display:block;font-size:12px;font-weight:400}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0}
+ol{padding-left:20px;margin:6px 0}li{margin:4px 0}
+label{display:block;font-weight:600;margin:10px 0 4px}
+input,textarea,select{width:100%;font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+textarea{min-height:90px}
+.row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:640px){.row{grid-template-columns:1fr}}
+button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--fg);padding:8px 14px}
+button.p{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:600}
+:root:not([data-theme="light"]) button.p{color:#0b1220}
+button:disabled{opacity:.45;cursor:not-allowed}
+.board{display:grid;grid-template-columns:minmax(250px,330px) 1fr;gap:16px;align-items:start}
+@media(max-width:760px){.board{grid-template-columns:1fr}}
+.pcol{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+@media(min-width:761px){.pcol{position:sticky;top:8px;max-height:calc(100vh - 24px);overflow:auto}}
+.tk{display:flex;justify-content:space-between;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin:6px 0;cursor:grab;font-weight:600;font-size:14px}
+.pcol .tk{background:var(--bg)}
+.tk.sel{outline:2px solid var(--ac);background:var(--acbg)}
+.tk.hard{border-color:var(--warn)}
+.fl{border:0;background:none;padding:0 4px;color:var(--mut);font-size:16px;align-self:flex-start}
+.hard .fl{color:var(--warn)}
+.grp{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin-bottom:12px}
+.grp.over,.pcol.over{outline:2px dashed var(--ac)}
+.gh{display:flex;gap:6px}.gh input{font-weight:600}
+.bar{position:sticky;bottom:0;background:var(--card);border:1px solid var(--ac);border-radius:12px;padding:10px;margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.bar select{width:auto;flex:1;min-width:150px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.mx{border-collapse:collapse;font-size:10px;text-align:center}
+.mx td,.mx th{width:22px;height:22px;border:1px solid var(--line);padding:0}
+.mx .dg{background:var(--line)}
+.sc{overflow-x:auto}
+details{margin:6px 0}summary{cursor:pointer;font-weight:600}
+</style></head><body><main>
+<div class="top"><div><h1>Card sorting · Moodle CUGDL</h1><span class="mut">Equipo Buena Bonanza · Proyecto UX, Unidad 3</span></div>
+<button id="adm" hidden onclick="location.hash='resultados'">Ver resultados</button></div>
+
+<section id="v0">
+<div class="box"><h2>¿Qué es un card sorting?</h2>
+<p>Es un ejercicio para descubrir cómo organizarías tú la información de un sitio. Te damos tarjetas con funciones de Moodle (por ejemplo, “Calendario” o “Entrega en equipo”) y tú las agrupas como te haga más sentido. Después le pones nombre a cada grupo. Con las respuestas de varias personas decidimos el menú y las etiquetas del rediseño.</p>
+<p><b>No es un examen:</b> no hay respuestas correctas ni incorrectas. Piensa en dónde buscarías cada función, no en cómo está hoy en Moodle.</p></div>
+<div class="box"><h2>Cómo hacerlo (10 a 15 minutos)</h2><ol>
+<li>Lee las 23 tarjetas; cada una trae una descripción breve.</li>
+<li>Arrastra cada tarjeta a un grupo. En celular, toca la tarjeta y elige a qué grupo moverla.</li>
+<li>Crea tantos grupos como necesites y ponles nombre con tus propias palabras.</li>
+<li>Marca con ⚑ las tarjetas que te costaron trabajo ubicar. Al final nos cuentas por qué.</li></ol></div>
+<div class="box"><h2>Antes de empezar</h2>
+<label for="nm">Nombre o alias (opcional)</label><input id="nm" maxlength="60">
+<div class="row"><div><label for="ca">Carrera</label><input id="ca" maxlength="60"></div><div><label for="se">Semestre</label><input id="se" maxlength="20" placeholder="Ej. 3.º"></div><div></div></div>
+<p><button class="p" id="go" disabled>Empezar</button></p></div>
+</section>
+
+<section id="v1" hidden>
+<p class="mut" style="margin:10px 0">Tarjetas por ordenar: <b id="pc"></b>. Arrastra o toca una tarjeta para moverla. ⚑ = me costó ubicarla.</p>
+<div class="board">
+<div class="pcol" id="pool"></div>
+<div><p style="margin:0 0 10px"><button id="ng">＋ Nuevo grupo</button></p><div id="gs"></div></div>
+</div>
+<div class="bar" id="mv" hidden><span>Mover «<b id="ms"></b>» a:</span><select id="mo"></select><button id="mn">＋ Grupo nuevo con esta tarjeta</button><button id="mc">Cancelar</button></div>
+<p style="margin-top:16px"><button class="p" id="done" disabled>Terminar</button> <span class="mut" id="hint">Ordena todas las tarjetas y nombra cada grupo para continuar.</span></p>
+</section>
+
+<section id="v2" hidden>
+<div class="box"><h2>Un último paso</h2>
+<p class="mut" id="hl"></p>
+<label for="cm">¿Qué tarjetas te costaron más y por qué? ¿Falta algo que buscarías en Moodle?</label>
+<textarea id="cm" maxlength="800"></textarea>
+<p><button id="bk">← Volver a mis grupos</button> <button class="p" id="sd">Enviar mis resultados</button></p></div>
+</section>
+
+<section id="v3" hidden>
+<div class="box"><h2>¡Gracias por participar!</h2><p id="sv"></p>
+<details id="rw"><summary>Copiar mis resultados</summary><p class="mut">Copia este texto y mándaselo al equipo.</p><textarea id="raw" readonly onclick="this.select()"></textarea><p><button onclick="const t=document.getElementById('raw');t.select();try{navigator.clipboard.writeText(t.value)}catch(e){document.execCommand('copy')}">Copiar texto</button></p></details></div>
+</section>
+
+<section id="v4" hidden>
+<div class="box"><h2>Resultados</h2><div id="res">Cargando…</div></div>
+<div class="box"><h2>Agregar respuestas pegadas</h2><p class="mut">Una por línea, en el texto que copian quienes no pudieron guardar.</p><textarea id="pa"></textarea><p><button id="pb">Agregar y recalcular</button></p></div>
+</section>
+</main>
+<script>
+const C=[["Mis cursos","Lista de las materias del semestre"],["Tareas por entregar","Lista de pendientes"],["Entregar una tarea","Subir el archivo de una actividad, cambiarlo o dejar un comentario para el profesor"],["Estado de mi entrega","Si una tarea está entregada o pendiente"],["Calendario y fechas límite","Cuándo vence cada actividad, en una vista de todas las materias"],["Avisos del profesor","Comunicados de la materia"],["Foros","Conversar con profesores y compañeros, o abrir un tema nuevo"],["Mensajes y chat","Escribir directamente a una persona"],["Notificaciones","Alertas de actividad nueva o por vencer"],["Calificaciones","Resultados de las actividades"],["Retroalimentación y rúbricas","Comentarios y criterios de evaluación"],["Cuestionarios","Exámenes o pruebas en línea"],["Material de clase","Archivos, lecturas y unidades en que se divide la materia"],["Progreso del curso","Avance del estudiante en la materia"],["Mi perfil y contraseña","Datos personales y seguridad de la cuenta"],["Configurar alertas y recordatorios","Elegir qué avisos recibir y cómo (en la app o por correo)"],["Modo oscuro o claro","Apariencia de la plataforma"],["Aplicación móvil","Moodle en el celular"],["Tutorial de primer ingreso","Guía para quien empieza"],["Ayuda y soporte","Contacto cuando algo falla"],["Cursos anteriores","Materias de semestres pasados"],["Entrega en equipo","Subir un trabajo y agregar a tus compañeros por correo"],["Confirmar mi participación","Responder si participé o no en un trabajo en equipo"]];
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const order=[...C.keys()].sort(()=>Math.random()-.5);
+let S={groups:[],hard:new Set(),sel:null},gid=0,fg=0,pasted=(()=>{try{return JSON.parse(localStorage.getItem("cs")||"[]")}catch(e){return[]}})();
+const show=n=>{["v0","v1","v2","v3","v4"].forEach((v,i)=>$("#"+v).hidden=i!==n);scrollTo(0,0)};
+const pool=()=>order.filter(i=>!S.groups.some(g=>g.c.includes(i)));
+const tk=i=>`<div class="tk${S.sel===i?" sel":""}${S.hard.has(i)?" hard":""}" draggable="true" data-i="${i}"><span>${esc(C[i][0])}<small>${esc(C[i][1])}</small></span><button class="fl" data-f="${i}" title="Me costó ubicarla" aria-label="Marcar como difícil de ubicar">⚑</button></div>`;
+function chk(){const p=pool();$("#done").disabled=!(p.length==0&&S.groups.some(g=>g.c.length)&&S.groups.every(g=>!g.c.length||g.n.trim()))}
+function draw(){
+ const p=pool();
+ $("#pool").innerHTML=p.map(tk).join("")||'<p class="mut">¡Ya ordenaste todas! Revisa tus grupos y pulsa “Terminar”.</p>';
+ $("#pc").textContent=p.length;
+ $("#gs").innerHTML=S.groups.map(g=>`<div class="grp" data-g="${g.id}"><div class="gh"><input data-n="${g.id}" value="${esc(g.n)}" placeholder="Nombre del grupo (con tus palabras)" maxlength="60"><button data-x="${g.id}" title="Eliminar grupo (sus tarjetas regresan)">✕</button></div>${g.c.map(tk).join("")||'<p class="mut">Arrastra tarjetas aquí</p>'}</div>`).join("")||'<p class="mut">Aún no hay grupos. Crea el primero con “＋ Nuevo grupo”.</p>';
+ $("#mv").hidden=S.sel==null;
+ if(S.sel!=null){$("#ms").textContent=C[S.sel][0];$("#mo").innerHTML='<option value="">Elige un grupo…</option><option value="p">Sin agrupar</option>'+S.groups.map(g=>`<option value="${g.id}">${esc(g.n||"Grupo sin nombre")}</option>`).join("")}
+ chk();
+ if(fg){const e=document.querySelector(`[data-n="${fg}"]`);e&&e.focus();fg=0}
+}
+function move(i,to){S.groups.forEach(g=>g.c=g.c.filter(x=>x!==i));if(to!=null)S.groups.find(g=>g.id===to).c.push(i);S.sel=null;draw()}
+function newG(i){const g={id:++gid,n:"",c:[]};S.groups.push(g);fg=g.id;if(i!=null)move(i,g.id);else draw()}
+function ready(){$("#go").disabled=!($("#ca").value.trim()&&$("#se").value.trim())}
+["#ca","#se"].forEach(s=>$(s).addEventListener("input",ready));
+$("#go").onclick=()=>{show(1);draw()};
+$("#ng").onclick=()=>newG(null);
+$("#mn").onclick=()=>newG(S.sel);
+$("#mc").onclick=()=>{S.sel=null;draw()};
+$("#mo").onchange=e=>{const v=e.target.value;if(!v)return;move(S.sel,v==="p"?null:+v)};
+document.addEventListener("click",e=>{
+ const f=e.target.closest("[data-f]");if(f){const i=+f.dataset.f;S.hard.has(i)?S.hard.delete(i):S.hard.add(i);draw();return}
+ const x=e.target.closest("[data-x]");if(x){S.groups=S.groups.filter(g=>g.id!==+x.dataset.x);draw();return}
+ const t=e.target.closest(".tk");if(t){const i=+t.dataset.i;S.sel=S.sel===i?null:i;draw();return}
+ if(S.sel==null||e.target.closest("input,button,select"))return;
+ const g=e.target.closest(".grp");if(g)return move(S.sel,+g.dataset.g);
+ if(e.target.closest("#pool"))move(S.sel,null);
+});
+document.addEventListener("input",e=>{const n=e.target.dataset&&e.target.dataset.n;if(n){S.groups.find(g=>g.id===+n).n=e.target.value;chk()}});
+document.addEventListener("dragstart",e=>{const t=e.target.closest(".tk");if(t)e.dataTransfer.setData("text/plain",t.dataset.i)});
+const tgt=e=>e.target.closest&&e.target.closest(".grp,#pool");
+document.addEventListener("dragover",e=>{const t=tgt(e);if(t){e.preventDefault();t.classList.add("over")}});
+document.addEventListener("dragleave",e=>{const t=tgt(e);t&&t.classList.remove("over")});
+document.addEventListener("drop",e=>{const t=tgt(e);if(!t)return;e.preventDefault();t.classList.remove("over");const i=+e.dataTransfer.getData("text/plain");move(i,t.dataset.g?+t.dataset.g:null)});
+$("#done").onclick=()=>{S.groups=S.groups.filter(g=>g.c.length);const h=[...S.hard].map(i=>C[i][0]);$("#hl").textContent=h.length?"Marcaste como difíciles: "+h.join(", ")+".":"No marcaste tarjetas difíciles.";show(2)};
+$("#bk").onclick=()=>{show(1);draw()};
+$("#sd").onclick=async()=>{
+ const out={t:Date.now(),name:$("#nm").value.trim(),carrera:$("#ca").value.trim(),sem:$("#se").value.trim(),groups:S.groups.map(g=>({n:g.n.trim(),c:g.c.map(i=>i+1)})),hard:[...S.hard].map(i=>i+1),comment:$("#cm").value.trim()};
+ const ok=false;
+ 
+ $("#sv").textContent="Último paso: copia el texto de abajo y mándaselo al equipo por el chat del grupo. Tus respuestas no llegan solas.";
+ $("#rw").open=!ok;$("#raw").value=JSON.stringify(out);show(3)};
+async function results(){
+ show(4);$("#res").textContent="Cargando…";let rows=[];
+ 
+ rows=rows.concat(pasted);const n=C.length,N=rows.length,M=Array.from({length:n},()=>Array(n).fill(0)),H=Array(n).fill(0);
+ rows.forEach(r=>{(r.groups||[]).forEach(g=>g.c.forEach(a=>g.c.forEach(b=>{if(a!==b)M[a-1][b-1]++})));(r.hard||[]).forEach(i=>H[i-1]++)});
+ const mx='<div class="sc"><table class="mx"><tr><th></th>'+C.map((_,i)=>`<th>${i+1}</th>`).join("")+"</tr>"+C.map((c,a)=>`<tr><th>${a+1}</th>`+C.map((_,b)=>a==b?'<td class="dg"></td>':`<td title="${esc(c[0]+" + "+C[b][0])}: ${M[a][b]} de ${N}" style="background:color-mix(in srgb,var(--ac) ${Math.round(M[a][b]/Math.max(N,1)*100)}%,transparent)">${M[a][b]||""}</td>`).join("")+"</tr>").join("")+"</table></div>";
+ const hard=C.map((c,i)=>[c[0],H[i]]).filter(x=>x[1]).sort((a,b)=>b[1]-a[1]).map(x=>`${esc(x[0])} (${x[1]})`).join(", ")||"Ninguna todavía";
+ $("#res").innerHTML=`<p><b>${N}</b> participantes. Promedio de grupos: <b>${N?(rows.reduce((s,r)=>s+(r.groups||[]).length,0)/N).toFixed(1):0}</b>.</p>
+ <h2>Tarjetas difíciles de ubicar</h2><p>${hard}</p>
+ <h2>Matriz de similitud</h2><p class="mut">Cada celda cuenta cuántas personas pusieron juntas las dos tarjetas (más color = más acuerdo). Pasa el cursor para ver los nombres.</p>${mx}
+ <details><summary>Leyenda de tarjetas</summary><p>${C.map((c,i)=>`<b>${i+1}</b> ${esc(c[0])}`).join(" · ")}</p></details>
+ <h2>Participantes</h2>${rows.map(r=>`<details><summary>${esc(r.name||"Anónimo")} · ${esc(r.carrera||"")} ${esc(r.sem||"")} · ${(r.groups||[]).length} grupos</summary>${(r.groups||[]).map(g=>`<p><b>${esc(g.n)}:</b> ${g.c.map(i=>esc(C[i-1][0])).join(", ")}</p>`).join("")}${r.comment?`<p class="mut">Comentario: ${esc(r.comment)}</p>`:""}</details>`).join("")}
+ <details><summary>Datos en bruto (JSON)</summary><textarea readonly>${esc(JSON.stringify(rows))}</textarea></details>`}
+$("#pb").onclick=()=>{pasted=pasted.concat($("#pa").value.split("\n").map(l=>{try{return JSON.parse(l)}catch(e){return null}}).filter(Boolean));$("#pa").value="";try{localStorage.setItem("cs",JSON.stringify(pasted))}catch(e){}results()};
+const route=()=>location.hash==="#resultados"?results():show(0);
+addEventListener("hashchange",route);route();
+
+</script></body></html>
