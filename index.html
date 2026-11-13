@@ -42,7 +42,7 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .mx{border-collapse:collapse;font-size:10px;text-align:center}
 .mx td,.mx th{width:22px;height:22px;border:1px solid var(--line);padding:0}
 .mx .dg{background:var(--line)}
-.sc{overflow-x:auto}
+.sc{overflow-x:auto}.mx2{border-collapse:collapse;font-size:13px}.mx2 th,.mx2 td{border:1px solid var(--line);padding:4px 8px;text-align:center}.mx2 td:nth-child(2){text-align:left}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600}
 </style></head><body><main>
 <div class="top"><div><h1>Card sorting · Moodle CUGDL</h1><span class="mut">Equipo Buena Bonanza · Proyecto UX, Unidad 3</span></div>
@@ -50,12 +50,12 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600}
 
 <section id="v0">
 <div class="box"><h2>¿Qué es un card sorting?</h2>
-<p>Es un ejercicio para descubrir cómo organizarías tú la información de un sitio. Te damos tarjetas con funciones de Moodle (por ejemplo, “Calendario” o “Entrega en equipo”) y tú las agrupas como te haga más sentido. Después le pones nombre a cada grupo. Con las respuestas de varias personas decidimos el menú y las etiquetas del rediseño.</p>
+<p>Es un ejercicio para descubrir cómo organizarías tú la información de un sitio. Te damos tarjetas con funciones de Moodle (por ejemplo, “Calendario” o “Entrega en equipo”) y cinco apartados ya definidos (a esto se le llama card sorting cerrado). Tú acomodas cada tarjeta en el apartado donde crees que la encontrarías. Con las respuestas de varias personas decidimos el menú y las etiquetas del rediseño.</p>
 <p><b>No es un examen:</b> no hay respuestas correctas ni incorrectas. Piensa en dónde buscarías cada función, no en cómo está hoy en Moodle.</p></div>
 <div class="box"><h2>Cómo hacerlo (10 a 15 minutos)</h2><ol>
 <li>Lee las 23 tarjetas; cada una trae una descripción breve.</li>
-<li>Arrastra cada tarjeta a un grupo. En celular, toca la tarjeta y elige a qué grupo moverla.</li>
-<li>Crea tantos grupos como necesites y ponles nombre con tus propias palabras.</li>
+<li>Arrastra cada tarjeta al apartado donde la buscarías. En celular, toca la tarjeta y elige a qué apartado moverla.</li>
+<li>Cada tarjeta va en un solo apartado, pero puedes cambiarla de lugar las veces que quieras. Todas deben quedar acomodadas.</li>
 <li>Marca con ⚑ las tarjetas que te costaron trabajo ubicar. Al final nos cuentas por qué.</li></ol></div>
 <div class="box"><h2>Antes de empezar</h2>
 <label for="nm">Nombre o alias (opcional)</label><input id="nm" maxlength="60">
@@ -67,16 +67,16 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600}
 <p class="mut" style="margin:10px 0">Tarjetas por ordenar: <b id="pc"></b>. Arrastra o toca una tarjeta para moverla. ⚑ = me costó ubicarla.</p>
 <div class="board">
 <div class="pcol" id="pool"></div>
-<div><p style="margin:0 0 10px"><button id="ng">＋ Nuevo grupo</button></p><div id="gs"></div></div>
+<div><div id="gs"></div></div>
 </div>
-<div class="bar" id="mv" hidden><span>Mover «<b id="ms"></b>» a:</span><select id="mo"></select><button id="mn">＋ Grupo nuevo con esta tarjeta</button><button id="mc">Cancelar</button></div>
-<p style="margin-top:16px"><button class="p" id="done" disabled>Terminar</button> <span class="mut" id="hint">Ordena todas las tarjetas y nombra cada grupo para continuar.</span></p>
+<div class="bar" id="mv" hidden><span>Mover «<b id="ms"></b>» a:</span><select id="mo"></select><button id="mc">Cancelar</button></div>
+<p style="margin-top:16px"><button class="p" id="done" disabled>Terminar</button> <span class="mut" id="hint">Acomoda todas las tarjetas para continuar.</span></p>
 </section>
 
 <section id="v2" hidden>
 <div class="box"><h2>Un último paso</h2>
 <p class="mut" id="hl"></p>
-<label for="cm">¿Qué tarjetas te costaron más y por qué? ¿Falta algo que buscarías en Moodle?</label>
+<label for="cm">¿Qué tarjetas te costaron más y por qué? ¿Algún apartado no te convenció o falta algo que buscarías en Moodle?</label>
 <textarea id="cm" maxlength="800"></textarea>
 <p><button id="bk">← Volver a mis grupos</button> <button class="p" id="sd">Enviar mis resultados</button></p></div>
 </section>
@@ -95,18 +95,19 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600}
 const C=[["Mis cursos","Lista de las materias del semestre"],["Tareas por entregar","Lista de pendientes"],["Entregar una tarea","Subir el archivo de una actividad, cambiarlo o dejar un comentario para el profesor"],["Estado de mi entrega","Si una tarea está entregada o pendiente"],["Calendario y fechas límite","Cuándo vence cada actividad, en una vista de todas las materias"],["Avisos del profesor","Comunicados de la materia"],["Foros","Conversar con profesores y compañeros, o abrir un tema nuevo"],["Mensajes y chat","Escribir directamente a una persona"],["Notificaciones","Alertas de actividad nueva o por vencer"],["Calificaciones","Resultados de las actividades"],["Retroalimentación y rúbricas","Comentarios y criterios de evaluación"],["Cuestionarios","Exámenes o pruebas en línea"],["Material de clase","Archivos, lecturas y unidades en que se divide la materia"],["Progreso del curso","Avance del estudiante en la materia"],["Mi perfil y contraseña","Datos personales y seguridad de la cuenta"],["Configurar alertas y recordatorios","Elegir qué avisos recibir y cómo (en la app o por correo)"],["Modo oscuro o claro","Apariencia de la plataforma"],["Aplicación móvil","Moodle en el celular"],["Tutorial de primer ingreso","Guía para quien empieza"],["Ayuda y soporte","Contacto cuando algo falla"],["Cursos anteriores","Materias de semestres pasados"],["Entrega en equipo","Subir un trabajo y agregar a tus compañeros por correo"],["Confirmar mi participación","Responder si participé o no en un trabajo en equipo"]];
 const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const order=[...C.keys()].sort(()=>Math.random()-.5);
-let S={groups:[],hard:new Set(),sel:null},gid=0,fg=0,pasted=(()=>{try{return JSON.parse(localStorage.getItem("cs")||"[]")}catch(e){return[]}})();
+const G=["Pantalla de Inicio","Ajustes","Tablero de actividades","Equipo de trabajo","Entregables"];
+let S={groups:G.map((n,i)=>({id:i+1,n,c:[]})),hard:new Set(),sel:null},gid=0,fg=0,pasted=(()=>{try{return JSON.parse(localStorage.getItem("cs")||"[]")}catch(e){return[]}})();
 const show=n=>{["v0","v1","v2","v3","v4"].forEach((v,i)=>$("#"+v).hidden=i!==n);scrollTo(0,0)};
 const pool=()=>order.filter(i=>!S.groups.some(g=>g.c.includes(i)));
 const tk=i=>`<div class="tk${S.sel===i?" sel":""}${S.hard.has(i)?" hard":""}" draggable="true" data-i="${i}"><span>${esc(C[i][0])}<small>${esc(C[i][1])}</small></span><button class="fl" data-f="${i}" title="Me costó ubicarla" aria-label="Marcar como difícil de ubicar">⚑</button></div>`;
-function chk(){const p=pool();$("#done").disabled=!(p.length==0&&S.groups.some(g=>g.c.length)&&S.groups.every(g=>!g.c.length||g.n.trim()))}
+function chk(){const p=pool();$("#done").disabled=p.length>0}
 function draw(){
  const p=pool();
- $("#pool").innerHTML=p.map(tk).join("")||'<p class="mut">¡Ya ordenaste todas! Revisa tus grupos y pulsa “Terminar”.</p>';
+ $("#pool").innerHTML=p.map(tk).join("")||'<p class="mut">¡Ya acomodaste todas! Revisa y pulsa “Terminar”.</p>';
  $("#pc").textContent=p.length;
- $("#gs").innerHTML=S.groups.map(g=>`<div class="grp" data-g="${g.id}"><div class="gh"><input data-n="${g.id}" value="${esc(g.n)}" placeholder="Nombre del grupo (con tus palabras)" maxlength="60"><button data-x="${g.id}" title="Eliminar grupo (sus tarjetas regresan)">✕</button></div>${g.c.map(tk).join("")||'<p class="mut">Arrastra tarjetas aquí</p>'}</div>`).join("")||'<p class="mut">Aún no hay grupos. Crea el primero con “＋ Nuevo grupo”.</p>';
+ $("#gs").innerHTML=S.groups.map(g=>`<div class="grp" data-g="${g.id}"><h2>${esc(g.n)} <small style="display:inline">(${g.c.length})</small></h2>${g.c.map(tk).join("")||'<p class="mut">Arrastra tarjetas aquí</p>'}</div>`).join("")||'<p class="mut">Aún no hay grupos. Crea el primero con “＋ Nuevo grupo”.</p>';
  $("#mv").hidden=S.sel==null;
- if(S.sel!=null){$("#ms").textContent=C[S.sel][0];$("#mo").innerHTML='<option value="">Elige un grupo…</option><option value="p">Sin agrupar</option>'+S.groups.map(g=>`<option value="${g.id}">${esc(g.n||"Grupo sin nombre")}</option>`).join("")}
+ if(S.sel!=null){$("#ms").textContent=C[S.sel][0];$("#mo").innerHTML='<option value="">Elige un apartado…</option><option value="p">Sin acomodar</option>'+S.groups.map(g=>`<option value="${g.id}">${esc(g.n||"Grupo sin nombre")}</option>`).join("")}
  chk();
  if(fg){const e=document.querySelector(`[data-n="${fg}"]`);e&&e.focus();fg=0}
 }
@@ -115,8 +116,8 @@ function newG(i){const g={id:++gid,n:"",c:[]};S.groups.push(g);fg=g.id;if(i!=nul
 function ready(){$("#go").disabled=!($("#ca").value.trim()&&$("#se").value.trim())}
 ["#ca","#se"].forEach(s=>$(s).addEventListener("input",ready));
 $("#go").onclick=()=>{show(1);draw()};
-$("#ng").onclick=()=>newG(null);
-$("#mn").onclick=()=>newG(S.sel);
+
+
 $("#mc").onclick=()=>{S.sel=null;draw()};
 $("#mo").onchange=e=>{const v=e.target.value;if(!v)return;move(S.sel,v==="p"?null:+v)};
 document.addEventListener("click",e=>{
@@ -133,7 +134,7 @@ const tgt=e=>e.target.closest&&e.target.closest(".grp,#pool");
 document.addEventListener("dragover",e=>{const t=tgt(e);if(t){e.preventDefault();t.classList.add("over")}});
 document.addEventListener("dragleave",e=>{const t=tgt(e);t&&t.classList.remove("over")});
 document.addEventListener("drop",e=>{const t=tgt(e);if(!t)return;e.preventDefault();t.classList.remove("over");const i=+e.dataTransfer.getData("text/plain");move(i,t.dataset.g?+t.dataset.g:null)});
-$("#done").onclick=()=>{S.groups=S.groups.filter(g=>g.c.length);const h=[...S.hard].map(i=>C[i][0]);$("#hl").textContent=h.length?"Marcaste como difíciles: "+h.join(", ")+".":"No marcaste tarjetas difíciles.";show(2)};
+$("#done").onclick=()=>{const h=[...S.hard].map(i=>C[i][0]);$("#hl").textContent=h.length?"Marcaste como difíciles: "+h.join(", ")+".":"No marcaste tarjetas difíciles.";show(2)};
 $("#bk").onclick=()=>{show(1);draw()};
 $("#sd").onclick=async()=>{
  const out={t:Date.now(),name:$("#nm").value.trim(),carrera:$("#ca").value.trim(),sem:$("#se").value.trim(),groups:S.groups.map(g=>({n:g.n.trim(),c:g.c.map(i=>i+1)})),hard:[...S.hard].map(i=>i+1),comment:$("#cm").value.trim()};
@@ -147,12 +148,12 @@ async function results(){
  rows=rows.concat(pasted);const n=C.length,N=rows.length,M=Array.from({length:n},()=>Array(n).fill(0)),H=Array(n).fill(0);
  rows.forEach(r=>{(r.groups||[]).forEach(g=>g.c.forEach(a=>g.c.forEach(b=>{if(a!==b)M[a-1][b-1]++})));(r.hard||[]).forEach(i=>H[i-1]++)});
  const mx='<div class="sc"><table class="mx"><tr><th></th>'+C.map((_,i)=>`<th>${i+1}</th>`).join("")+"</tr>"+C.map((c,a)=>`<tr><th>${a+1}</th>`+C.map((_,b)=>a==b?'<td class="dg"></td>':`<td title="${esc(c[0]+" + "+C[b][0])}: ${M[a][b]} de ${N}" style="background:color-mix(in srgb,var(--ac) ${Math.round(M[a][b]/Math.max(N,1)*100)}%,transparent)">${M[a][b]||""}</td>`).join("")+"</tr>").join("")+"</table></div>";
- const hard=C.map((c,i)=>[c[0],H[i]]).filter(x=>x[1]).sort((a,b)=>b[1]-a[1]).map(x=>`${esc(x[0])} (${x[1]})`).join(", ")||"Ninguna todavía";
- $("#res").innerHTML=`<p><b>${N}</b> participantes. Promedio de grupos: <b>${N?(rows.reduce((s,r)=>s+(r.groups||[]).length,0)/N).toFixed(1):0}</b>.</p>
+ const ct='<div class="sc"><table class="mx2"><tr><th>#</th><th>Tarjeta</th>'+G.map(g=>`<th>${esc(g)}</th>`).join("")+'<th>Acuerdo</th></tr>'+C.map((c,i)=>{const k=G.map(g=>rows.filter(r=>(r.groups||[]).some(x=>x.n===g&&x.c.includes(i+1))).length),m=Math.max(...k);return `<tr><td>${i+1}</td><td>${esc(c[0])}</td>`+k.map(v=>`<td style="background:color-mix(in srgb,var(--ac) ${Math.round(v/Math.max(N,1)*70)}%,transparent);${v&&v===m?"font-weight:700":""}">${N?Math.round(v/N*100):0}%</td>`).join("")+`<td>${N?Math.round(m/N*100):0}%</td></tr>`}).join("")+'</table></div>';const hard=C.map((c,i)=>[c[0],H[i]]).filter(x=>x[1]).sort((a,b)=>b[1]-a[1]).map(x=>`${esc(x[0])} (${x[1]})`).join(", ")||"Ninguna todavía";
+ $("#res").innerHTML=`<p><b>${N}</b> participantes.</p>
  <h2>Tarjetas difíciles de ubicar</h2><p>${hard}</p>
- <h2>Matriz de similitud</h2><p class="mut">Cada celda cuenta cuántas personas pusieron juntas las dos tarjetas (más color = más acuerdo). Pasa el cursor para ver los nombres.</p>${mx}
+ <h2>Dónde ubicó cada tarjeta la gente</h2><p class="mut">Cada celda es el porcentaje de participantes que puso la tarjeta en ese apartado; en negritas, el apartado ganador. Un acuerdo bajo indica una tarjeta que conviene revisar.</p>${ct}
  <details><summary>Leyenda de tarjetas</summary><p>${C.map((c,i)=>`<b>${i+1}</b> ${esc(c[0])}`).join(" · ")}</p></details>
- <h2>Participantes</h2>${rows.map(r=>`<details><summary>${esc(r.name||"Anónimo")} · ${esc(r.carrera||"")} ${esc(r.sem||"")} · ${(r.groups||[]).length} grupos</summary>${(r.groups||[]).map(g=>`<p><b>${esc(g.n)}:</b> ${g.c.map(i=>esc(C[i-1][0])).join(", ")}</p>`).join("")}${r.comment?`<p class="mut">Comentario: ${esc(r.comment)}</p>`:""}</details>`).join("")}
+ <h2>Participantes</h2>${rows.map(r=>`<details><summary>${esc(r.name||"Anónimo")} · ${esc(r.carrera||"")} ${esc(r.sem||"")}</summary>${(r.groups||[]).map(g=>`<p><b>${esc(g.n)}:</b> ${g.c.map(i=>esc(C[i-1][0])).join(", ")}</p>`).join("")}${r.comment?`<p class="mut">Comentario: ${esc(r.comment)}</p>`:""}</details>`).join("")}
  <details><summary>Datos en bruto (JSON)</summary><textarea readonly>${esc(JSON.stringify(rows))}</textarea></details>`}
 $("#pb").onclick=()=>{pasted=pasted.concat($("#pa").value.split("\n").map(l=>{try{return JSON.parse(l)}catch(e){return null}}).filter(Boolean));$("#pa").value="";try{localStorage.setItem("cs",JSON.stringify(pasted))}catch(e){}results()};
 const route=()=>location.hash==="#resultados"?results():show(0);
